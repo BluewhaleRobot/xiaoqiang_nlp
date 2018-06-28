@@ -1,0 +1,14 @@
+<launch>
+    <node name="xiaoqiang_nlp" pkg="xiaoqiang_nlp" type="xiaoqiang_nlp_node.py" output="screen">
+        <!-- 自然语言处理后端，目前只支持图灵机器人 -->
+        <param name="engine" value="tuling"/>
+        <!-- 图灵apikey,在图灵机器人官网可以申请 -->
+        <param name="apikey" value="48729e91db1549669dc305fdf3efa6c5" />
+        <!-- 用户ID，根据用户ID可以区分不同的用户 -->
+        <param name="userid" value="5fdf3efa6c5" />
+        <!-- 输入文字话题 -->
+        <remap from="~listen" to="/xiaoqiang_asr/text" />
+        <!-- 输出文字话题 -->
+        <remap from="~talk" to="/xiaoqiang_tts/text" />
+    </node>
+</launch>

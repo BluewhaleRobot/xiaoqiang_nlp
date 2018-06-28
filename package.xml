@@ -1,0 +1,17 @@
+<package format="2">
+  <name>xiaoqiang_nlp</name>
+  <version>0.0.1</version>
+  <description>
+      xiaoqiang nature language processing package, use tuling robot api as backend
+  </description>
+  <license>MIT</license>
+  <author email="randoms@bwbot.org">Randoms</author>
+  <maintainer email="randoms@bwbot.org">Randoms</maintainer>
+  <url type="website">http://github.com/bluewhalerobot/xiaoqiang_nlp</url>
+  <url type="bugtracker">https://github.com/bluewhalerobot/xiaoqiang_nlp/issues</url>
+  <url type="repository">https://github.com/bluewhalerobot/xiaoqiang_nlp</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+</package>
