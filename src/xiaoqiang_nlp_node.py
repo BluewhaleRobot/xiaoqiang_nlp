@@ -28,6 +28,7 @@
 import rospy
 from std_msgs.msg import String
 from engines.tuling import Tuling
+from engines.tencent import Tencent
 import time
 
 if __name__ == "__main__":
@@ -39,6 +40,9 @@ if __name__ == "__main__":
     client = None
     if engine == "tuling":
         client = Tuling()
+    
+    if engine == "tencent":
+        client = Tencent()
 
     if client is None:
         rospy.logerr("Unknown engine {engine}".format(engine=engine))

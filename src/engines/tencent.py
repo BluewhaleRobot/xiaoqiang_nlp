@@ -25,35 +25,19 @@
 # Author: Randoms
 #
 
-import rospy
-import requests
-import json
 
-class Tuling:
+from tencent_sdk.apiutil import AiPlat
+import rospy
+
+
+class Tencent:
 
     def __init__(self):
-        self.apikey = rospy.get_param(
-            "~apikey", "48729e91db1549669dc305fdf3efa6c5")
-        self.userid = rospy.get_param("~userid", "284385")
+        self.app_id = rospy.get_param("app_id", "1106931651")
+        self.app_key = rospy.get_param("app_key", "4zPhSchATxSCmWun")
+        self.client = AiPlat(self.app_id, self.app_key)
 
     def talk(self, words):
-        res = requests.post("http://openapi.tuling123.com/openapi/api/v2", json={
-            "reqType": 0,
-            "perception": {
-                "inputText": {
-                    "text": words,
-                },
-            },
-            "userInfo": {
-                "apiKey": self.apikey,
-                "userId": self.userid
-            }
-        })
-        if res.status_code != 200:
-            return ""
-        res = json.loads(res.content.decode("utf-8"))
-        if res["intent"]["code"] < 7000:
-            rospy.logerr(res["results"][0]["values"]["text"])
-            return ""
-        return res["results"][0]["values"]["text"]
-        
+        return self.client.getNlpChat(words)["data"]["answer"]
+
+
